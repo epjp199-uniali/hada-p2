@@ -28,8 +28,16 @@ namespace Hada
         //Constructor con parametros string fila, string columna
         public Coordenada(string fila, string columna)
         {
-            Fila = int.Parse(fila);
-            Columna = int.Parse(columna);
+            try
+            {
+                Fila = int.Parse(fila);
+                Columna = int.Parse(columna);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Datos de entrada incorrectos");
+            }
+
         }
 
         //Constructor de copia
