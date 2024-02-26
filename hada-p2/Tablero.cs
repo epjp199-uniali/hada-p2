@@ -14,7 +14,7 @@ namespace Hada
 
         private List<Coordenada> coordenadasTocadas;
 
-        private List<Barco> barcos;
+        private List<Barco> barcos; 
 
         private List<Barco> barcosEliminados;
 
