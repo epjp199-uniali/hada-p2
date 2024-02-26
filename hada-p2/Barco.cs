@@ -18,6 +18,16 @@ namespace Hada
 
         int NumDanyos;
 
+        public Barco(string nombre, int longitud, char orientacion, Coordenada coordenadaInicio)
+        {
+            try
+            {
+
+            }
+            catch
+        }
+
+
 
     }
 }

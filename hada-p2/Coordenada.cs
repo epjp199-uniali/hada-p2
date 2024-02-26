@@ -8,6 +8,10 @@ namespace Hada
 {
     class Coordenada
     {
+
+        //Atributos
+
+
         public int Fila;
         public int Columna;
 
