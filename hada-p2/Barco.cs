@@ -20,11 +20,32 @@ namespace Hada
 
         public Barco(string nombre, int longitud, char orientacion, Coordenada coordenadaInicio)
         {
-            try
-            {
 
+            Nombre = nombre;
+
+            Coordenada aux;
+            if (orientacion == 'h')
+            {
+                for(int i = coordenadaInicio.Columna;  i < coordenadaInicio.Columna + longitud; i++)
+                {
+                    aux = new Coordenada(coordenadaInicio.Fila, i);
+
+                    CoordenadasBarco.Add(aux, Nombre);
+                }
             }
-            catch
+            else if(orientacion == 'v')
+            {
+                for (int i = coordenadaInicio.Fila; i < coordenadaInicio.Fila + longitud; i++)
+                {
+                    aux = new Coordenada(i,coordenadaInicio.Columna);
+
+                    CoordenadasBarco.Add(aux, Nombre);
+                }
+            }
+            else
+            {
+                Console.WriteLine("Orientacion invalida, introduzca h o v");
+            }
         }
 
 
