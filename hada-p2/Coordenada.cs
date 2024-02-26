@@ -4,13 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace hada_p2
+namespace Hada
 {
-    class Program
+    class Coordenada
     {
-        static void Main(string[] args)
-        {
-            
-        }
     }
 }
