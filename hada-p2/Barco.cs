@@ -12,6 +12,8 @@ namespace Hada
         {
             get;
             private set;
+
+            //Aqui van eventos
         }
 
         public string Nombre;
@@ -22,30 +24,75 @@ namespace Hada
         {
 
             Nombre = nombre;
+            NumDanyos = 0;
 
             Coordenada aux;
             if (orientacion == 'h')
             {
-                for(int i = coordenadaInicio.Columna;  i < coordenadaInicio.Columna + longitud; i++)
+                try
                 {
-                    aux = new Coordenada(coordenadaInicio.Fila, i);
+                    for (int i = coordenadaInicio.Columna; i < coordenadaInicio.Columna + longitud; i++)
+                    {
+                        aux = new Coordenada(coordenadaInicio.Fila, i);
 
-                    CoordenadasBarco.Add(aux, Nombre);
+                        CoordenadasBarco.Add(aux, Nombre);
+                    }
                 }
+                catch(ArgumentException)
+                {
+                    Console.WriteLine("Coordenadas ocupadas");
+                }
+                
             }
             else if(orientacion == 'v')
             {
-                for (int i = coordenadaInicio.Fila; i < coordenadaInicio.Fila + longitud; i++)
+                try
                 {
-                    aux = new Coordenada(i,coordenadaInicio.Columna);
+                    for (int i = coordenadaInicio.Fila; i < coordenadaInicio.Fila + longitud; i++)
+                    {
+                        aux = new Coordenada(i, coordenadaInicio.Columna);
 
-                    CoordenadasBarco.Add(aux, Nombre);
+                        CoordenadasBarco.Add(aux, Nombre);
+                    }
+                }
+                catch (ArgumentException)
+                {
+                    Console.WriteLine("Coordenadas ocupadas");
                 }
             }
             else
             {
                 Console.WriteLine("Orientacion invalida, introduzca h o v");
             }
+        }
+
+        public void Disparo(Coordenada Boom)
+        {
+            if (CoordenadasBarco.ContainsKey(Boom))
+            {
+                CoordenadasBarco[Boom] = CoordenadasBarco[Boom] + "_T";
+
+                //Aqui va un evento de disparo
+
+                NumDanyos++;
+
+            }
+        }
+
+        public bool hundido()
+        {
+            bool hundido = true;
+
+            foreach (var b in CoordenadasBarco)
+            {
+                if(b.Value == Nombre)
+                {
+                    hundido = true;
+                }
+            }
+
+
+            return hundido;
         }
 
 
