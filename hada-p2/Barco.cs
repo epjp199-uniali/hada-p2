@@ -8,6 +8,13 @@ namespace Hada
 {
     class Barco
     {
+
+        //Comentado para que compile
+
+        //public event EventHandler<TocadoArgs> eventoTocado;
+        //public event EventHandler<HundidoArgs> eventoHundido;
+
+        //Declaracion de Diccionario
         public Dictionary<Coordenada, String> CoordenadasBarco
         {
             get;
@@ -16,10 +23,13 @@ namespace Hada
             //Aqui van eventos
         }
 
+        //Nombre del barco
         public string Nombre;
 
-        int NumDanyos;
+        //Numero de daño
+        public int NumDanyos;
 
+        //Constructor
         public Barco(string nombre, int longitud, char orientacion, Coordenada coordenadaInicio)
         {
 
@@ -66,19 +76,22 @@ namespace Hada
             }
         }
 
+        //Metodo de disparo
         public void Disparo(Coordenada Boom)
         {
             if (CoordenadasBarco.ContainsKey(Boom))
             {
                 CoordenadasBarco[Boom] = CoordenadasBarco[Boom] + "_T";
 
-                //Aqui va un evento de disparo
+                //Aqui va un evento de tocado
 
                 NumDanyos++;
 
+                //Comprobar si barco hundido, si lo esta, evento hundido
             }
         }
 
+        //Metodo de hundido
         public bool hundido()
         {
             bool hundido = true;
@@ -95,7 +108,20 @@ namespace Hada
             return hundido;
         }
 
+        public override string ToString()
+        {
+            String output;
+            String dictouput = "";
 
+            foreach (Coordenada c in CoordenadasBarco.Keys)
+            {
+                dictouput = dictouput + "[" + c + " :" + CoordenadasBarco[c] + "] ";
+            }
+
+            output = "[" + Nombre + "] - DAÑOS: [" + NumDanyos + "] - HUNDIDO: [" + hundido() + "] COORDENADAS: [" + CoordenadasBarco + "]"; 
+
+            return output;
+        }
 
     }
 }
