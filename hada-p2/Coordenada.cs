@@ -39,7 +39,7 @@ namespace Hada
             }
             catch (Exception e)
             {
-                Console.WriteLine("Datos de entrada incorrectos");
+                throw new Exception("Datos de entrada incorrectos");
             }
 
         }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Hada
 {
-    class Barco
+    public class Barco
     {
 
         public event EventHandler<TocadoArgs> eventoTocado;
@@ -75,9 +75,10 @@ namespace Hada
         //Metodo de disparo
         public void Disparo(Coordenada Boom)
         {
-            if (CoordenadasBarco.ContainsKey(Boom))
+
+            if ((CoordenadasBarco.ContainsKey(Boom))&&(CoordenadasBarco[Boom] == Nombre + "_T"))
             {
-                CoordenadasBarco[Boom] = CoordenadasBarco[Boom] + "_T";
+                CoordenadasBarco[Boom] = Nombre + "_T";
 
                 //Aqui va un evento de tocado
                 eventoTocado(this, new TocadoArgs(Nombre, Boom, CoordenadasBarco[Boom]));
@@ -102,7 +103,7 @@ namespace Hada
             {
                 if(b.Value == Nombre)
                 {
-                    hundido = true;
+                    hundido = false;
                 }
             }
 
