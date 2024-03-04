@@ -9,18 +9,14 @@ namespace Hada
     class Barco
     {
 
-        //Comentado para que compile
-
-        //public event EventHandler<string g> eventoTocado;
-        //public event EventHandler<HundidoArgs> eventoHundido;
+        public event EventHandler<TocadoArgs> eventoTocado;
+        public event EventHandler<HundidoArgs> eventoHundido;
 
         //Declaracion de Diccionario
         public Dictionary<Coordenada, String> CoordenadasBarco
         {
             get;
             private set;
-
-            //Aqui van eventos
         }
 
         //Nombre del barco
@@ -84,10 +80,16 @@ namespace Hada
                 CoordenadasBarco[Boom] = CoordenadasBarco[Boom] + "_T";
 
                 //Aqui va un evento de tocado
+                eventoTocado(this, new TocadoArgs(Nombre, Boom, CoordenadasBarco[Boom]));
 
                 NumDanyos++;
 
                 //Comprobar si barco hundido, si lo esta, evento hundido
+                if (hundido())
+                {
+                    eventoHundido(this, new HundidoArgs(Nombre));
+                }
+               
             }
         }
 

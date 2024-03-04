@@ -36,15 +36,15 @@ namespace Hada
 
         }
 
-        public string DibujarTablero()
-        {
+        //public string DibujarTablero()
+        //{
 
-        }
+        //}
  
-        public string ToString()
-        {
+        //public string ToString()
+        //{
 
-        }
+        //}
 
         private void cuandoEventoTocado() // Cuando se invoca se actualizan las casillas del tablero y se imprime el siguiente texto: 
         {                                 // TABLERO: Barco [NOMBRE_BARCO] tocado en Coordenada: [(FILA,COLUMNA)]
