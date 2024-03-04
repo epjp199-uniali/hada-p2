@@ -11,7 +11,7 @@ namespace Hada
 
         //Comentado para que compile
 
-        //public event EventHandler<TocadoArgs> eventoTocado;
+        //public event EventHandler<string g> eventoTocado;
         //public event EventHandler<HundidoArgs> eventoHundido;
 
         //Declaracion de Diccionario
