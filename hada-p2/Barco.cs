@@ -32,6 +32,8 @@ namespace Hada
             Nombre = nombre;
             NumDanyos = 0;
 
+            CoordenadasBarco = new Dictionary<Coordenada,String>();
+
             Coordenada aux;
             if (orientacion == 'h')
             {
@@ -41,12 +43,19 @@ namespace Hada
                     {
                         aux = new Coordenada(coordenadaInicio.Fila, i);
 
-                        CoordenadasBarco.Add(aux, Nombre);
+                        if (!CoordenadasBarco.ContainsKey(aux))
+                        {
+                            CoordenadasBarco.Add(aux, Nombre);  
+                        }
+                        else
+                        {
+                            CoordenadasBarco[aux] = Nombre;
+                        }
                     }
                 }
                 catch(ArgumentException)
                 {
-                    Console.WriteLine("Coordenadas ocupadas");
+                    throw new Exception("Coordenadas ocupadas");
                 }
                 
             }
@@ -58,17 +67,25 @@ namespace Hada
                     {
                         aux = new Coordenada(i, coordenadaInicio.Columna);
 
-                        CoordenadasBarco.Add(aux, Nombre);
+
+                        if (!CoordenadasBarco.ContainsKey(aux))
+                        {
+                            CoordenadasBarco.Add(aux, Nombre);
+                        }
+                        else
+                        {
+                            CoordenadasBarco[aux] = Nombre;
+                        }
                     }
                 }
                 catch (ArgumentException)
                 {
-                    Console.WriteLine("Coordenadas ocupadas");
+                    throw new Exception("Coordenadas ocupadas");
                 }
             }
             else
             {
-                Console.WriteLine("Orientacion invalida, introduzca h o v");
+                throw new Exception("Orientacion invalida, introduzca h o v");
             }
         }
 
@@ -76,8 +93,10 @@ namespace Hada
         public void Disparo(Coordenada Boom)
         {
 
-            if ((CoordenadasBarco.ContainsKey(Boom))&&(CoordenadasBarco[Boom] == Nombre + "_T"))
+            if ((CoordenadasBarco.ContainsKey(Boom))&&(CoordenadasBarco[Boom] != Nombre + "_T"))
             {
+
+
                 CoordenadasBarco[Boom] = Nombre + "_T";
 
                 //Aqui va un evento de tocado
@@ -107,7 +126,6 @@ namespace Hada
                 }
             }
 
-
             return hundido;
         }
 
@@ -118,10 +136,10 @@ namespace Hada
 
             foreach (Coordenada c in CoordenadasBarco.Keys)
             {
-                dictouput = dictouput + "[" + c + " :" + CoordenadasBarco[c] + "] ";
+                dictouput = dictouput + "[" + c + " : " + CoordenadasBarco[c] + "] ";
             }
 
-            output = "[" + Nombre + "] - DAÑOS: [" + NumDanyos + "] - HUNDIDO: [" + hundido() + "] COORDENADAS: [" + CoordenadasBarco + "]"; 
+            output = "[" + Nombre + "] - DAÑOS: [" + NumDanyos + "] - HUNDIDO: [" + hundido() + "] COORDENADAS: " + dictouput ; 
 
             return output;
         }

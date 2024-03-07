@@ -11,9 +11,27 @@ namespace Hada
 
         //Atributos
 
+        public int fila;
 
-        public int Fila;
-        public int Columna;
+        public int columna;
+
+
+        public int Fila
+        {
+            get { return fila; }
+            set
+            {
+                fila = value;
+            }
+        }
+        public int Columna
+        {
+            get { return columna; }
+            set
+            {
+                columna = value;
+            }
+        }
 
         //Constructor por defecto
         public Coordenada()
@@ -90,20 +108,8 @@ namespace Hada
                 return false;
             }
 
-            if (ReferenceEquals(this, obj))
-            {
-                return true;
-            }
 
             if (this.GetHashCode() != obj.GetHashCode())
-            {
-                return false;
-            }
-
-            System.Diagnostics.Debug.Assert(
-            base.GetType() != typeof(object));
-
-            if (!base.Equals(obj))
             {
                 return false;
             }
