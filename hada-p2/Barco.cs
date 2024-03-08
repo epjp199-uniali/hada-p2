@@ -144,7 +144,7 @@ namespace Hada
                 dictouput = dictouput + "[" + c + " : " + CoordenadasBarco[c] + "] ";
             }
 
-            output = "[" + Nombre + "] - DAÑOS: [" + NumDanyos + "] - HUNDIDO: [" + hundido() + "] COORDENADAS: " + dictouput ; 
+            output = "[" + Nombre + "] - DAÑOS: [" + NumDanyos + "] - HUNDIDO: [" + hundido() + "] - COORDENADAS: " + dictouput ; 
 
             return output;
         }

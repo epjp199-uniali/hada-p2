@@ -143,7 +143,7 @@ namespace Hada
 
         public string DibujarTablero()
         {
-            string output = "CASILLAS TABLERO \n -------------- \n";
+            string output = "CASILLAS TABLERO \n------- \n";
 
             Coordenada aux;
 
@@ -175,7 +175,7 @@ namespace Hada
 
             output += "\n";
 
-            output += "Coordenadas disparadas: ";
+            output += " Coordenadas disparadas: ";
 
             foreach(Coordenada c in coordenadasDisparadas)
             {
@@ -184,7 +184,7 @@ namespace Hada
 
             output += "\n";
 
-            output += "Coordenadas tocadas: ";
+            output += " Coordenadas tocadas: ";
 
             foreach (Coordenada c in coordenadasTocadas)
             {
