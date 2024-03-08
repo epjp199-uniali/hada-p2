@@ -9,6 +9,7 @@ namespace Hada
     public class Barco
     {
 
+        //Declaracion de Eventos Tocado y Hundido
         public event EventHandler<TocadoArgs> eventoTocado;
         public event EventHandler<HundidoArgs> eventoHundido;
 
@@ -35,6 +36,8 @@ namespace Hada
             CoordenadasBarco = new Dictionary<Coordenada,String>();
 
             Coordenada aux;
+
+            //Orientacion horizontal
             if (orientacion == 'h')
             {
                 try
@@ -59,6 +62,7 @@ namespace Hada
                 }
                 
             }
+            //Orientación vertical
             else if(orientacion == 'v')
             {
                 try
@@ -95,8 +99,7 @@ namespace Hada
 
             if ((CoordenadasBarco.ContainsKey(Boom))&&(CoordenadasBarco[Boom] != Nombre + "_T"))
             {
-
-
+                //Le añadimos a la etiqueta el _T
                 CoordenadasBarco[Boom] = Nombre + "_T";
 
                 //Aqui va un evento de tocado
@@ -116,13 +119,15 @@ namespace Hada
         //Metodo de hundido
         public bool hundido()
         {
+            //Suponemos que todos los estan
             bool hundido = true;
 
+            //Comprobamos si alguno de los barcos NO esta hundido
             foreach (var b in CoordenadasBarco)
             {
                 if(b.Value == Nombre)
                 {
-                    hundido = false;
+                    hundido = false; //Si alguno no esta hundido, significa que no lo estan todos
                 }
             }
 

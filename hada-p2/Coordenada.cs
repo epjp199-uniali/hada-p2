@@ -9,13 +9,13 @@ namespace Hada
     public class Coordenada
     {
 
-        //Atributos
-
+        
+        //Campos de respaldo
         public int fila;
 
         public int columna;
 
-
+        //Atributos
         public int Fila
         {
             get { return fila; }

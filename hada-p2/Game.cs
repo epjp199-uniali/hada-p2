@@ -8,14 +8,16 @@ namespace Hada
 {
     public class Game
     {
+        //Atributos
         private bool finPartida = false;
 
-
+        //Constructor
         public Game()
         {
             gameLoop();
         }
 
+        //Metodo que controlara el evento fin de partida
         private void eventoFinPartida(object sender, EventArgs e)
         {
             finPartida = true;
@@ -29,6 +31,8 @@ namespace Hada
             bool coordenadacorrect = false;
 
             List<Barco> barcos = new List<Barco>();
+            
+            //Añadimos varios barcos a la lista de barcos
 
             barcos.Add(new Barco("PEPE", 3, 'v', new Coordenada(0, 0)));
             barcos.Add(new Barco("JUAN", 1, 'h', new Coordenada(7, 6)));
@@ -36,8 +40,9 @@ namespace Hada
 
 
            
-           Tablero table = new Tablero(8, barcos);
+           Tablero table = new Tablero(9, barcos);
 
+            //Suscribimos nuestro evento controlador al evento de tablero "eventoFinPartida"
             table.eventoFinPartida += eventoFinPartida;
 
             while (!finPartida)
